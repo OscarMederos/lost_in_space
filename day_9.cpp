@@ -15,9 +15,7 @@ void setup() {
   pinMode(red, OUTPUT);
   pinMode(green, OUTPUT);
   pinMode(blue, OUTPUT);
-
   Serial.begin(9600);
-
 }
 
 void RGB_color(int red_value, int green_value, int blue_value) {
@@ -34,9 +32,9 @@ void ShowBatteryPercentage() {
   PercentFull=getBatteryPercentage();
 
   Serial.print(ticks);
-  Serial.print(" ms    charge at ");
+  Serial.print(" ms charge at ");
   Serial.print(PercentFull);
-  Serial.print("%");
+  Serial.println("% ");
 
   if (PercentFull > 0 && PercentFull <= 25) {
     RGB_color(125, 0, 0);
@@ -61,7 +59,7 @@ void loop() {
   if(batteryLevel >= batteryCapacity) {
     Serial.print(ticks);
     Serial.print(" ms ");
-    Serial.print("Fully Charged");
+    Serial.println("FULLY CHARGED");
     batteryLevel = batteryCapacity;
     ticks = 0;
     RGB_color(0, 125, 0);
